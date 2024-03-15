@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleTest", "OracleTest\OracleTest.csproj", "{DA14CC8F-0177-45C5-9C4C-DA7BFB289280}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "useList", "useList\useList.csproj", "{198042C2-ABED-494B-AE9A-936E58DCE307}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA14CC8F-0177-45C5-9C4C-DA7BFB289280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA14CC8F-0177-45C5-9C4C-DA7BFB289280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA14CC8F-0177-45C5-9C4C-DA7BFB289280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA14CC8F-0177-45C5-9C4C-DA7BFB289280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{198042C2-ABED-494B-AE9A-936E58DCE307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{198042C2-ABED-494B-AE9A-936E58DCE307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{198042C2-ABED-494B-AE9A-936E58DCE307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{198042C2-ABED-494B-AE9A-936E58DCE307}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {148B03B2-C33A-48C2-8BD4-5DC7B873D7FA}
+	EndGlobalSection
+EndGlobal

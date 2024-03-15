@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable: 4996)
+#include <iostream>
+#define endl '\n'
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);   cout.tie(NULL);
+
+	long long int num;
+	cin >> num;
+
+	long long int cnt = 0;
+	while (num >= 3) {
+		if (num % 5 == 0) {
+			cnt += num / 5;	num = 0;
+			break;
+		}
+		cnt += 1;	num -= 3;
+	}
+
+	if (num != 0) { cout << -1 << endl; }
+	else{ cout << cnt << endl; }
+}

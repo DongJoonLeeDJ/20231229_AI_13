@@ -1,0 +1,25 @@
+
+
+	//V,A,B 그리고 D
+
+	int a, b, v;
+	scanf("%d %d %d", &a, &b, &v);
+	// A, B, V
+	//2 1 5 = 4
+	//
+	// 
+	// 
+	//5 1 6 = 2
+	//100 99 1000000000 => 999999901
+	int day = 0;
+	int distance = 0;
+
+	while (1)
+	{
+		day++;
+		distance += a;
+		if (distance >= v)
+			break;
+		distance -= b;
+	}
+	printf("%d\n", day);

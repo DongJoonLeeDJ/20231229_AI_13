@@ -1,0 +1,23 @@
+//NUGET에서 ORACLE 검색해서 추가함
+        const string ORADB = "Data Source=(DESCRIPTION=(ADDRESS_LIST=" +
+            "(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))" +
+            "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));" +
+            "User Id=c##scott;Password=tiger;";
+
+        OracleCommand cmd = new OracleCommand();
+        protected static DataSet ds;
+        protected static OracleConnection OraConn = new OracleConnection();
+
+        public void ConnectDB()
+        {
+            try
+            {
+                OraConn = new OracleConnection(ORADB);
+                OraConn.Open();
+                cmd = new OracleCommand();
+            }
+            catch (Exception ex)
+            {
+                //showDBError(e);
+            }
+        }

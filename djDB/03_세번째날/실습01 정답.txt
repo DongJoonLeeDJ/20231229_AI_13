@@ -1,0 +1,41 @@
+create table mydjdbstudent
+( hakbeon varchar2(10) primary key,
+name varchar2(60),
+age int,
+hakgwacode char(3));
+
+create table mydjdbhakgwa
+(
+code char(3) primary key,
+name varchar2(30));
+
+alter table mydjdbstudent add constraint fk_hakgwa foreign key(hakgwacode) references mydjdbhakgwa(code);
+
+insert into mydjdbhakgwa(code, name) values('001','컴퓨터공학과');
+insert into mydjdbhakgwa values('002', '아동가족학과');
+
+insert into mydjdbstudent(hakbeon, name, age, hakgwacode) values('01','이동준',35,'001');
+insert into mydjdbstudent(hakbeon, name, age, hakgwacode) values('02','이유나',25,'001');
+insert into mydjdbstudent(hakbeon, name, age, hakgwacode) values('11','이동준',27,'002');
+insert into mydjdbstudent(hakbeon, name, age, hakgwacode) values('22','이유나',37,'002');
+insert into mydjdbstudent(hakbeon, name, age, hakgwacode) values('33','김형준',22,'002');
+
+commit;
+
+
+
+select * from mydjdbhakgwa;
+select * from mydjdbstudent;
+
+select hakbeon, mydjdbstudent.name, age, mydjdbhakgwa.name from mydjdbhakgwa join mydjdbstudent on mydjdbhakgwa.code=mydjdbstudent.hakgwacode;
+
+create view djdbstudents as select hakbeon, mydjdbstudent.name "학생 이름", age, mydjdbhakgwa.name 학과명 from mydjdbhakgwa join mydjdbstudent on mydjdbhakgwa.code=mydjdbstudent.hakgwacode;
+
+select * from djdbstudents;
+--insert into djdbstudents values('99','김동현',19,'컴퓨터공학과');
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+select erate,lvlchck from electrorate where 1=1;
+select erate,lvlchck from electrorate where lvlchck>=500 and rownum=1 order by lvlchck ;
+
+select * from electrorate;
+select * from electrorate where rownum=1 order by lvlchck desc ;
+
+select * from (select * from electrorate order by lvlchck desc) where rownum=1; -- oracle식 limit 활용

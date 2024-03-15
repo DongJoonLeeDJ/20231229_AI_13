@@ -1,0 +1,103 @@
+--1. 5번 고객의 연락처를 변경하시오
+--2. 5번 고객의 address를 대한민국 서울로 변경하시오
+update customer set phone='010-1111-2222', address='대한민국 서울' where custid=5;
+--3. 주문 내역에서 고객의 이름과 책 이름이 나오게 출력하시오.
+select orderid, name, bookname from orders join book on orders.bookid=book.bookid join customer on orders.custid=customer.custid;
+--4. 출판사별 평균 가격을 출력하시오.
+-- ~별로 출력해라... 이런 거면 group by를 생각해야 함...
+select publisher, avg(price) from book group by publisher;
+--5. 출판사별 최고 가격을 구하시오.
+select publisher, max(price) from book group by publisher;
+
+--6. 출판사별 평균 가격이 가장 비싼 출판사를 출력하시오.
+create view avgbooks as select publisher, avg(price) avgprice from book group by publisher;
+select publisher from avgbooks where avgprice=(select max(avgprice) from avgbooks);
+
+--9. 책을 가장 많이 구매한 고객을 출력하시오. (IN 키워드 필요)
+--select * from book where bookid in (1,2,3); --bookid가 1이거나 2이거나 3인 경우, or과 같은 것
+select custid, count(*) from orders group by custid;
+--count(*)  : 행의 수, 즉 줄의 수
+create view custcount as select custid, count(*) c_count from orders group by custid;
+select * from custcount;
+select max(c_count) from custcount;
+select custid from custcount where c_count=(select max(c_count) from custcount);
+select custid, name from customer where custid in (select custid from custcount where c_count=(select max(c_count) from custcount));
+
+-- view는 원본이 바뀌면 view도 바뀜
+--insert into orders (custid,bookid) values (1,6);
+
+--10. orders의 saleprice를 book 테이블을 참조하여 추가하시오.
+update orders set saleprice=(select price from book where bookid=orders.bookid);
+select * from orders;
+--11. 1번 고객이 10번 책을 추가 구매하려고 한다. 1번 고객의 saleprice를 90%로 변경하기 ex. 10,000->9,000
+--update orders set saleprice=(select price from book where bookid=orders.bookid)*0.9 where custid=1;
+insert into orders (custid,bookid,saleprice) values (1,10,(select price from book where bookid=10)*0.9);
+
+--7. 책 구매에 가장 돈을 적게 쓴 고객을 출력하시오.
+select custid, sum(saleprice) sumprice from orders group by custid;
+create view custsumorder as select custid, sum(saleprice) sumprice from orders group by custid;
+select * from custsumorder;
+create view custsumordermin as select sumprice, custid from custsumorder where sumprice = (select min(sumprice) from custsumorder);
+select * from custsumordermin;
+select name, sumprice from custsumordermin join customer on custsumordermin.custid = customer.custid;
+
+--8. 평균 책 구매 가격이 비싼 고객을 출력하시오.
+select custid, avg(saleprice) avgprice from orders group by custid;
+create view avgorder as select custid, avg(saleprice) avgprice from orders group by custid;
+select * from avgorder;
+create view maxavgorder as select custid, avgprice from avgorder where avgprice = (select max(avgprice) from avgorder);
+select * from maxavgorder;
+select name from maxavgorder join customer on maxavgorder.custid=customer.custid;
+
+--12(1). 박지성이 구매한 도서의 출판사와 같은 출판사에서 도서를 구매한 고객의 이름
+SELECT name FROM Customer, Orders, Book 
+WHERE Customer.custid=Orders.custid
+ AND Orders.bookid=Book.bookid AND name NOT LIKE '박지성' 
+AND publisher IN 
+(SELECT publisher FROM Customer, Orders, Book 
+WHERE Customer.custid=Orders.custid
+ AND Orders.bookid=Book.bookid
+AND name LIKE '박지성');
+
+--12(2)
+create view namesorderspublishers as 
+select orders.custid, orders.bookid, customer.name, book.bookname, publisher from orders join customer on orders.custid=customer.custid join book on orders.bookid=book.bookid; 
+select * from namesorderspublishers;
+
+select * from namesorderspublishers where publisher in (select publisher from namesorderspublishers where name='박지성') and name not like '박지성';
+
+
+--13. 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
+--DISTINCT : 중복 제거
+SELECT name FROM Customer c1
+WHERE 2 <=
+(SELECT COUNT(DISTINCT publisher) FROM Customer, Orders, Book 
+WHERE Customer.custid=Orders.custid
+ AND Orders.bookid=Book.bookid AND (name LIKE c1.name));
+ 
+--13-2
+select* from namesorderspublishers;
+select count(distinct publisher) from namesorderspublishers;
+select name from customer c1 where 2<=(SELECT COUNT(DISTINCT publisher) FROM namesorderspublishers  where (name LIKE c1.name));
+
+
+
+--14. 전체 고객의 30% 이상이 구매한 도서
+SELECT bookname FROM Book b1
+WHERE ( (SELECT COUNT(Book.bookid) FROM Book, Orders 
+ WHERE Book.bookid=Orders.bookid AND Book.bookid=b1.bookid) >= 0.3 * (SELECT COUNT(*) FROM Customer));
+
+--14(2)
+select orders.bookid, bookname from book join orders on book.bookid=orders.bookid;
+create view bookorders as select orders.bookid, bookname from book join orders on book.bookid=orders.bookid;
+select * from bookorders;
+
+SELECT bookname FROM Book b1
+WHERE ( (SELECT COUNT(bookid) FROM bookorders where b1.bookid=bookorders.bookid) >= 0.3 * (SELECT COUNT(*) FROM Customer));
+
+
+
+
+
+
+

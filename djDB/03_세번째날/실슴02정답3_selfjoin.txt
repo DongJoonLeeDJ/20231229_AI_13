@@ -1,0 +1,33 @@
+create sequence samsungcount;
+
+create table samsungperson(
+id int primary key,
+name varchar2(100) not null,
+boss_id int);
+
+insert into samsungperson values (samsungcount.nextval, '이건희', 1);
+select * from samsungperson;
+insert into samsungperson values (samsungcount.nextval, '홍라희', 2);
+
+insert into samsungperson values (samsungcount.nextval, '이재용', 1);
+insert into samsungperson values (samsungcount.nextval, '이부진', 1);
+
+insert into samsungperson values(samsungcount.nextval,'신라호텔',4);
+
+insert into samsungperson values(samsungcount.nextval,'삼성전자',3);
+insert into samsungperson values(samsungcount.nextval,'수원삼성',3);
+insert into samsungperson values(samsungcount.nextval,'삼성 라이온즈',3);
+
+select b.name 사원명, a.name 보스명 from samsungperson a join samsungperson b on a.id=b.boss_id;
+
+
+
+
+
+
+
+
+
+
+
+

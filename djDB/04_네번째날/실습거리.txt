@@ -1,0 +1,8 @@
+1. 코드 복습
+
+2. 자신이 구상했던 테이블 더 구상해보기 ★
+-> 직접 그림도 그려보기
+
+3. C#이나 java console, java gui(window builder) 이거랑 연동해보기
+
+-- 4. 생애 첫 SQL With 제코베_재배포2.pdf 내용 실습해보기

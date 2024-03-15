@@ -1,0 +1,107 @@
+-- 데이터 타입 : 숫자랑 문자열 이렇게 단순하게 설명했었다.
+
+
+--글자수 출력
+SELECT LENGTH('한글') FROM DUAL; -- 2
+--DUAL : 임시 테이블
+-- 함수 기능 테스트 할 때 쓰이는 테이블
+
+--한글은 1글자당 3바이트
+SELECT LENGTHB('한글') FROM DUAL;  -- 6
+
+
+--대표적으로 쓰이는 자료형들
+--VARCHAR, CHAR, INT, NCHAR, NVARCHAR
+
+--varchar2(100) = 최대 100byte
+--char(100) = 무조건 100byte - 학번이나 사번처럼 자리수 정해진 경우
+
+--nvarchar,nchar : byte가 아니라 글자수를 기준으로 하는 것
+--nchar(5) = 무조건 5글자 만큼의 메모리 크기를 할당하는 것
+
+create table myfood
+( num int primary key,
+  name varchar2(100),
+  code char(5) unique
+  );
+  
+  --복원이 안 되므로 신중하게 쓸 것!
+drop table myfood;
+  
+  
+  commit;
+  insert into myfood values(1,'초밥','00001');
+  insert into myfood values(2,'비빔밥','00002');
+  insert into myfood values(3,'국밥','00003');
+  update myfood set name='야채비빔밥' where num=2;
+  rollback;
+  select * from myfood;
+  delete from myfood;
+  
+  create sequence foodcount;
+  
+  create table myfood
+( num int default foodcount.nextval primary key,
+  name varchar2(100),
+  code char(5) unique
+  );
+  
+  insert into myfood(name,code) values ('비빔밥','00001');
+  insert into myfood(name,code) values ('국밥','00002');
+  select * from myfood;
+  
+  drop table myfood;
+  drop sequence foodcount;
+  
+  -- 외래키 : 다른 테이블의 기본키를 참조하여서 존재하지도 않는 값이 들어가는 오류 등을 방지하는 것
+  
+create table book
+(
+bookid int primary key,
+bookname varchar2(40) not null,
+publisher varchar2(40) not null,
+price int
+);
+create table customer
+(
+custid int primary key,
+name varchar2(40) not null,
+address varchar2(50),
+phone varchar2(20) unique
+);
+
+create sequence myorder;
+create table orders(
+orderid int default myorder.nextval primary key,
+custid int references customer(custid),
+bookid int references book(bookid),
+saleprice int,
+orderdate date default sysdate -- 자동으로 현재 시점 집어넣어 줌
+);
+
+insert into book values(1,'축구의 역사', '굿스포츠', 7000);
+
+insert into customer values(1,'박지성','영국 멘체스타', '000-5000-0001');
+
+insert into orders (custid,bookid,saleprice,orderdate) values 
+(1,1,7000,'2014-07-01');
+insert into orders (custid,bookid,saleprice) values 
+(1,1,7000);
+
+select * from orders;
+select * from customer;
+select * from book;
+  
+  -- JOIN 을 하게 되면 다른 테이블을 참조하여 좀 더 내용을 잘 볼 수 있게 됨
+  select orderid, name, bookname from book join orders on book.bookid = orders.bookid join customer on orders.custid=customer.custid;
+  
+--  select * from table
+
+-- 뷰 : 가상 테이블
+-- 실제로 존재하는 테이블은 아니고 select 결과물을 하나의 테이블 형태로 보관하는 것
+create view myorderdata as  select orderid, name, bookname from book join orders on book.bookid = orders.bookid join customer on orders.custid=customer.custid;
+
+select * from myorderdata;
+  
+  
+  

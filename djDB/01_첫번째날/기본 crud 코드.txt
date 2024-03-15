@@ -1,0 +1,17 @@
+-- ctrl + enter 누르면 해당 코드 실행
+-- --가 주석임 // 아님
+/*
+여러 줄 주석은 이거 쓸 수 있음
+*/
+create table mytest (num int primary key, name varchar2(100)); 
+
+insert into mytest(num,name) values (1,'테스트1');
+insert into mytest(num,name) values (2, '테스트2');
+
+select * from mytest;
+
+delete from mytest where num=1;
+
+update mytest set name='mytest2' where num=2;
+
+commit;

@@ -1,0 +1,26 @@
+try
+            {
+                ConnectDB();
+
+                string sql = "SELECT * FROM mytest";
+                OracleDataAdapter oda = new OracleDataAdapter();
+                oda.SelectCommand = new OracleCommand();
+                oda.SelectCommand.Connection = OraConn;
+                oda.SelectCommand.CommandText = sql;
+                ds = new DataSet();
+                oda.Fill(ds, "mytest");
+
+                OraConn.Close();
+
+                dataGridView1.Rows.Clear();
+
+                foreach(DataRow item in ds.Tables[0].Rows)
+                {
+                    dataGridView1.Rows.Add(item["num"].ToString(), item["name"].ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //showDBError(e);
+            }

@@ -1,0 +1,68 @@
+<mxfile host="app.diagrams.net" modified="2024-01-03T07:18:49.359Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="i8i6k5T26XBuxYZeyqJK" version="22.1.16" type="device">
+  <diagram name="페이지-1" id="la9TpBBM_NOFYgWQBPrA">
+    <mxGraphModel dx="1434" dy="840" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="pXpdVIO5cAyobqpNCEHS-1" target="pXpdVIO5cAyobqpNCEHS-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-1" value="year값 입력" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="294" y="80" width="206" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="pXpdVIO5cAyobqpNCEHS-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="pXpdVIO5cAyobqpNCEHS-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="397" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-3" value="year%2==0?" style="rhombus;whiteSpace=wrap;html=1;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="307" y="220" width="180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-6" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;순서도의 핵심은 마름모인 데,&lt;br&gt;마름모로 들어오는 화살표의 개수는&lt;br&gt;여러 개가 될 수 있다.&lt;br&gt;그 러 나!!!!!!&lt;br&gt;나가는 화살표의 개수는 반드시&lt;br&gt;2개!(Yer Or No)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="60" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-9" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="240" y="270" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-10" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="400" y="400" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-11" value="건강검진X" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="20" y="260" width="146" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-12" value="건강검진O" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="20" y="530" width="156" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-13" value="year==0?" style="rhombus;whiteSpace=wrap;html=1;fontSize=25;" vertex="1" parent="1">
+          <mxGeometry x="307" y="490" width="180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-18" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="240" y="540" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="580" as="targetPoint" />
+            <mxPoint x="307" y="580" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-20" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="400" y="670" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="397" y="760" as="targetPoint" />
+            <mxPoint x="397" y="670" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pXpdVIO5cAyobqpNCEHS-22" value="연도 0" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="319" y="760" width="156" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

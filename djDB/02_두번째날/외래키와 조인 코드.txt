@@ -1,0 +1,47 @@
+-- 학과를 관리하는 테이블을 먼저 생성해야 함 
+-- 학생 테이블에서는 이 테이블의 code를 '참조'하기 때문이다.
+create table major(code int primary key, name varchar2(100));
+-- not null : 생략 하면 안 된다는 의미
+-- hakgwacode int references major(code)의 의미 : hakgwacode라는 컬럼은 major의 code를 참조하겠다는 것
+-- 즉 외래키라는 의미임...
+create table mystudent
+(hakbeon int primary key,
+name varchar2(100) not null,
+hakgwacode int references major(code));
+
+-- major를 무조건 하나는 추가를 해줘야, 학생도 추가를 할 수 있음
+insert into major(code, name) values(11,'컴공'); -- 테이블명(컬럼명들) 이렇게 적는 경우에는 내가 원하는 컬럼에 대해서만 데이터 넣거나 혹은 원하는 순서대로 데이터 삽입할 수 있다.
+insert into major values(22,'화공'); -- 테이블명 values와 같이 컬럼명을 생략하였다면 무조건 순서와 개수 다 맞아야 함
+
+--major에 있는 학과 정보를 기반으로 하여 학생을 추가할 수 있음. 즉 이 시점에선 컴공 학생과 화공 학생만 추가 가능함
+insert into mystudent values(1,'이동준',11);
+insert into mystudent(name, hakgwacode, hakbeon) values('한형빈',22,2);
+
+
+-- 테이블 수정 키워드 : alter
+-- 컬럼을 추가하냐 삭제하냐 수정하냐에 따라서 조금씩 다르니 검색을 하자
+
+--만약 특정 컬럼을 추가하고 싶다(연락처랑 성별)
+--1. GUI
+--2. alter 테이블 명령어
+alter table mystudent add hp varchar2(11) unique;
+--unique : 중복되면 안 되지만 생략될 순 있다.
+--예)핸드폰번호, 차량번호 
+
+update mystudent set gender='M'; --별도의 where문을 적지 않았으므로 모두 남학생으로 일괄 변환됨
+update mystudent set hp='01029401613' where hakbeon=1;
+
+select * from major;
+select * from mystudent;
+
+-- Join
+-- Join이라 하면 Inner Join을 의미함
+-- Join은 outer join, right join, left join, self join
+select * from mystudent;
+select hakbeon, mystudent.name, major.name, gender, hp from mystudent join major on major.code=mystudent.hakgwacode;
+
+select hakbeon, mystudent.name 학생이름, major.name "학과 이름", gender, hp from mystudent join major on major.code=mystudent.hakgwacode;
+
+
+
+

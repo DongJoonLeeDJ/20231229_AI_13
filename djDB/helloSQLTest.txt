@@ -1,0 +1,6 @@
+--select * from testtable; -- ctrl enter
+--insert into testtable values(5,'djdj',100);
+--insert into testtable values('ccc','aaa','bbb');
+--delete from testtable;
+--insert into testtable values(1,'djlee',35);
+update testtable set name='이동준' where num=1; 

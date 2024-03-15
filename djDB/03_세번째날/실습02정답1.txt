@@ -1,0 +1,47 @@
+create table mydjkbmajor
+( name varchar2(30),
+ code char(3) primary key,
+ regdate timestamp default sysdate);
+ 
+insert into mydjkbmajor(name,code) values('컴공','001');
+insert into mydjkbmajor(name,code) values('화공','002');
+insert into mydjkbmajor(name,code) values('토공','003');
+
+select * from mydjkbmajor;
+
+create table mydjkbstudent
+(
+name varchar2(30),
+age char(2),
+hakbeon char(10),
+code char(3),
+regdate timestamp default sysdate,
+constraint myfk foreign key(code) REFERENCES mydjkbmajor(code)
+);
+
+insert into mydjkbstudent(hakbeon, name, age, code) values('2009038033', '추형욱', '30', '001');
+insert into mydjkbstudent(hakbeon, name, age, code) values('2009038035', '한형빈', '20', '001');
+insert into mydjkbstudent(hakbeon, name, age, code) values('2009038034', '조민석', '25', '002');
+insert into mydjkbstudent(hakbeon, name, age, code) values('2009038036', '박지선', '35', '002');
+insert into mydjkbstudent(hakbeon, name, age, code) values('2009038037', '이동준', '27', '003');
+insert into mydjkbstudent(hakbeon, name, age, code) values('2009038038', '이원진', '37', '003');
+insert into mydjkbstudent(hakbeon, name, age, code) values('2009038039', '장순재', '40', '001');
+
+
+select * from mydjkbmajor;
+select * from mydjkbstudent;
+
+--where문으로도 join이 가능함
+select hakbeon, mydjkbstudent.name, age, mydjkbmajor.name from mydjkbmajor join mydjkbstudent on mydjkbmajor.code = mydjkbstudent.code;
+--join 대신 콤마, on 대신 where
+select hakbeon, mydjkbstudent.name, age, mydjkbmajor.name from mydjkbmajor, mydjkbstudent where mydjkbmajor.code = mydjkbstudent.code;
+
+
+--특정 과의 학생들만 표시하는 방법
+--1. view 이용하기
+create view mykbdjstudents as select hakbeon, mydjkbstudent.name stuName, age, mydjkbmajor.name majName from mydjkbmajor join mydjkbstudent on mydjkbmajor.code = mydjkbstudent.code;
+select * from mykbdjstudents where majName='토공';
+--2. 그냥 select랑 where문 이용
+select hakbeon, mydjkbstudent.name, age, mydjkbmajor.name from mydjkbmajor join mydjkbstudent on mydjkbmajor.code = mydjkbstudent.code where mydjkbmajor.code='003';
+
+

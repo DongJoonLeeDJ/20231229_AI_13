@@ -1,0 +1,16 @@
+
+            if (textBox1.Text == "" || textBox2.Text == "")
+                return;
+
+            try
+            {
+                ConnectDB();
+                cmd.Connection = OraConn;
+                cmd.CommandText = $"INSERT INTO mytest VALUES ({textBox1.Text},'{textBox2.Text}')";
+                cmd.ExecuteNonQuery();
+                OraConn.Close();
+            }
+            catch (Exception ex)
+            {
+                //showDBError(e);
+            }

@@ -1,0 +1,22 @@
+#include <stdio.h>
+int main()
+{
+	int n, s, b;
+	printf("설탕\n");
+	scanf("%d", &n);
+
+	s = (n % 5 * 2) % 5;
+	b = n / 5 - (n % 5) % 3;
+	
+	if (b < 0)
+		printf("%d\n", -1);
+	else
+		printf("%d\n", s + b);
+
+	return 0;
+}
+//%5==0 > s ==0 B==n/5
+//%5==1 > s ==2 b==n/5-1
+//%5==2 > s ==4 b==n/5-2
+//%5==3 > s ==1 b==n/5
+//%5==4 > s ==3 b=n/5-1
