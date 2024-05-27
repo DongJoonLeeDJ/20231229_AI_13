@@ -1,0 +1,2 @@
+git config --global init.defaultBranch main
+git config --global gui.encoding utf-8

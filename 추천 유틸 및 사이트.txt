@@ -1,0 +1,39 @@
+1. 반디집 : 표준 압축 프로그램, 무료
+https://kr.bandisoft.com/bandizip/
+
+2. brave : 광고 차단 웹 브라우저
+https://brave.com/ko/download/
+
+3. everything : 고속 파일 탐색기
+https://www.voidtools.com/ko-kr/downloads/
+
+4. 스피드 코더 : 코딩 타이핑 연습하기 좋은 사이트
+https://www.speedcoder.net/
+
+5. 생성형 AI들
+5-1) chat gpt
+5-2) 뤼튼(유료 gpt 등을 무료로 이용할 수 있음)
+5-3) AskUp(카카오톡 플러스 친구)
+5-4) Bard (구글 AI)
+5-5) Copilot (Microsoft Edge에 MS 로그인만 하면 쓸 수 있음)
+
+6. notepad++ : 업그레이드 된 메모장
+https://notepad-plus-plus.org/downloads/
+
+7. ideone : 간단한 코딩 사이트
+https://ideone.com/
+
+8. draw.io : 순서도 그려주는 사이트(마름모와 사각형만 알면 순서도 그리기는 끝!) 
+draw.io
+
+9. dev c++ : 간단하게 C, C++ 코딩할 수 있는 프로그램
+https://sourceforge.net/projects/orwelldevcpp/files/latest/download
+
+10. visual studio : C,C++,C# 할 때 실무에서 가장 많이 사용하는 툴(Community 버전 추천, 유일한 무료, 나머지는 체험 후 유료)
+https://visualstudio.microsoft.com/ko/
+
+11. notion.io : 자신의 지식을 정리하기 좋은 사이트
+
+12. 백준, 프로그래머스 : 코딩 연습하기 좋은 사이
+https://www.acmicpc.net/
+https://school.programmers.co.kr/
