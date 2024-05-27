@@ -1,0 +1,5 @@
+bash로 업데이트하는 테스트123
+
+2차테스트 bash명령어테스트
+
+git add . git commit -m "저장하고싶은말넣는곳" git push origin[주소] main
