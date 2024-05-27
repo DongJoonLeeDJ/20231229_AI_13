@@ -15,7 +15,6 @@ namespace HelloCSharp00
             Console.Write("출력 후 한 줄 띄지 않음"); //System.out.print랑 동일
             Console.WriteLine("cw 탭탭");
             Console.WriteLine(); //java에서는 sysout 적고 ctrl space를 했음
-            Console.WriteLine(  "안뇽~~~");
 
             //문자열 처리
             //java에서는 get을 썼었음
