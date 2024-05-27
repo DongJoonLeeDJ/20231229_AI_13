@@ -10,6 +10,7 @@ namespace HelloCSharp01
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("안뇽~~~");
             int[] arrnums = new int[5];
             arrnums[0] = int.Parse(Console.ReadLine());
             bool result = int.TryParse(Console.ReadLine(), out arrnums[1]);
