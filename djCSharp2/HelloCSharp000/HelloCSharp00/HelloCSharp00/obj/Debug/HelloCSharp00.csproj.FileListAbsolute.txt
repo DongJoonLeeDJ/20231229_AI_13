@@ -1,0 +1,7 @@
+D:\sharework\djlee\djCSharp2\HelloCSharp000\HelloCSharp00\HelloCSharp00\bin\Debug\HelloCSharp00.exe.config
+D:\sharework\djlee\djCSharp2\HelloCSharp000\HelloCSharp00\HelloCSharp00\bin\Debug\HelloCSharp00.exe
+D:\sharework\djlee\djCSharp2\HelloCSharp000\HelloCSharp00\HelloCSharp00\bin\Debug\HelloCSharp00.pdb
+D:\sharework\djlee\djCSharp2\HelloCSharp000\HelloCSharp00\HelloCSharp00\obj\Debug\HelloCSharp00.csproj.AssemblyReference.cache
+D:\sharework\djlee\djCSharp2\HelloCSharp000\HelloCSharp00\HelloCSharp00\obj\Debug\HelloCSharp00.csproj.CoreCompileInputs.cache
+D:\sharework\djlee\djCSharp2\HelloCSharp000\HelloCSharp00\HelloCSharp00\obj\Debug\HelloCSharp00.exe
+D:\sharework\djlee\djCSharp2\HelloCSharp000\HelloCSharp00\HelloCSharp00\obj\Debug\HelloCSharp00.pdb
