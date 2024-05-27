@@ -11,11 +11,13 @@ namespace HelloCSharp01
         static void Main(string[] args)
         {
             int[] arrnums = new int[5];
+            Console.WriteLine("첫번째 값 입력");
             arrnums[0] = int.Parse(Console.ReadLine());
+            Console.WriteLine("두번째 값 입력");
             bool result = int.TryParse(Console.ReadLine(), out arrnums[1]);
 
             if (!result)
-                Console.WriteLine("두 번째 값은 잘못된 값으로 보여요");
+                Console.WriteLine("두 번째 값은 잘못된 값으로 보여요!");
 
             try
             {
