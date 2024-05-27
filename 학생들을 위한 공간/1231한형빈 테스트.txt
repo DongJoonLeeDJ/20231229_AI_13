@@ -1,3 +1,4 @@
 1234 테스트
 1237 테스트 push 
 1238 테스트 commit to main -> ctrl + p (push)
+1239 gitHub Desktop으로
