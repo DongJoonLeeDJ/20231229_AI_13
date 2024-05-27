@@ -1,0 +1,1 @@
+g.hibernate.boot.registry.selector.spi.StrategySelectionException: Unable to resolve name [org.hibernate.dialect.H2Dialect  ] as strategy [org.hibernate.dialect.Dialect]

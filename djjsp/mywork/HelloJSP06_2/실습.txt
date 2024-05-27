@@ -1,0 +1,4 @@
+update delete는 직접 실습해보세요
+hint) update용 form, delete용 form 다 CommandController.html에 만드시면 됩니다.
+하나의 폼 안에 버튼이나 a태그 이용하고 싶으시면 그렇게 하셔도 됩니다만,
+form을 2개 더 만드는 게 더 쉬울겁니다.
