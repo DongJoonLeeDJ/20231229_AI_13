@@ -1,0 +1,22 @@
+function fibo1(num)
+{
+    if( num<=0)
+        return 0
+    if(num<=2)
+        return 1
+    return fibo1(num-2)+fibo1(num-1)
+}
+
+function fibo2(num) {
+    if(num<=0)
+        return 0
+    if(obj[num] == undefined)
+    {
+        obj[num] = fibo2(num-2)+fibo2(num-1)
+        return obj[num]
+    }
+    else
+    {
+        return obj[num]
+    }
+}
