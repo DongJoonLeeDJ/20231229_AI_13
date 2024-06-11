@@ -91,10 +91,11 @@ namespace MyParkingManagerDB
                     cmd.Parameters.AddWithValue("@p5", pst);
                     //cmd.Parameters.AddWithValue("@p4", DateTime.Now.ToString
                     //    ("yyyy-MM-dd HH:mm:ss.fff"));
+
                 }
+
                 cmd.CommandText = sqlcommand;
                 cmd.ExecuteNonQuery();
-
             }
             catch (Exception ex)
             {
@@ -138,7 +139,7 @@ namespace MyParkingManagerDB
         {
             executeQuery(ps, "delete");
         }
-        public static void insertQueryt(string ps)
+        public static void insertQuery(string ps)
         {
             executeQuery(ps, "insert");
         }

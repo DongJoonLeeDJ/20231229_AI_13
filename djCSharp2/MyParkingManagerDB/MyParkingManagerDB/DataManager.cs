@@ -76,5 +76,46 @@ namespace MyParkingManagerDB
                 printLog("Save" + isRemove + ex.StackTrace);
             }
         }
+
+        //주차공간 추가삭제용 Save
+        //주차 출차 Save랑 오버로딩을 함(매개변수가 다름)
+        public static bool Save(string cmd, string ps, out string contents)
+        {
+            DBHelper.selectQuery(int.Parse(ps)); //해당 공간이 이미 있는 지 여부 조회
+            contents = "";
+            if (cmd.Equals("insert"))
+                return DBInsert(ps, ref contents);
+            else
+                return DBDelete(ps, ref contents);
+        }
+        private static bool DBDelete(string ps, ref string contents)
+        {
+            if(DBHelper.dt.Rows.Count!=0) //공간이 있는 경우
+            {
+                DBHelper.deleteQuery(ps);
+                contents = $"주차 공간 {ps} 삭제됨";
+                return true;
+            }
+            else
+            {
+                contents = "해당 공간은 아직 없습니다.";
+                return false;
+            }
+        }
+
+        private static bool DBInsert(string ps, ref string contents)
+        {
+            if(DBHelper.dt.Rows.Count==0) //공간이 아직 없는 경우
+            {
+                DBHelper.insertQuery(ps);
+                contents = $"주차 공간 {ps} 추가됨";
+                return true;
+            }
+            else
+            {
+                contents = "해당 공간이 이미 존재하여서 추가할 수 없습니다.";
+                return false;
+            }
+        }
     }
 }
