@@ -1,0 +1,67 @@
+// 다양한 문법 써보기도 하고 따로 클래스 만들기 싫어서 벌어진 촌극...
+//이 코드의 경우 30초 가량이 걸림
+
+private void button_chart_by_allDays_Click(object sender, EventArgs e)
+        {
+            var groupbyDateCreatedQualityResult = (from q in dataManager.qualityManagers
+                                                   orderby q.date_created, q.attribute_quality descending
+                                                   group q by new
+                                                   {
+                                                       q.date_created,
+                                                       q.attribute_quality
+                                                   } into groupData
+                                                   select new
+                                                   {
+                                                       DateCreated = groupData.Key.date_created,
+                                                       Quality = groupData.Key.attribute_quality,
+                                                       Count = groupData.Count()
+                                                   });
+            chart_init();
+
+            chart_display.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart_display.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart_display.ChartAreas[0].AxisX.Enabled = AxisEnabled.False;
+
+            for (int i = 0; i < groupbyDateCreatedQualityResult.Count();)
+            {
+                var group = groupbyDateCreatedQualityResult.ElementAt(i);
+
+                string nowDate = group.DateCreated.ToString("yyyy년 MM월 dd일");
+                string nextDate = null;
+                int nextCount = -1;
+                try
+                {
+                    //i가 맨 마지막 인덱스인 경우
+                    nextDate = groupbyDateCreatedQualityResult.ElementAt(i + 1).DateCreated.ToString("yyyy년 MM월 dd일");
+                    nextCount = groupbyDateCreatedQualityResult.ElementAt(i + 1).Count;
+                }
+                catch (Exception ex)
+                {
+                }
+
+                if (nowDate == nextDate)
+                {
+                    //양불 둘 다 추가해주고 i는 2씩 증가
+                    chart_display.Series[0].Points.AddY(group.Count);
+                    chart_display.Series[1].Points.AddY(nextCount);
+
+                    i += 2;
+                }
+                else
+                {
+                    //현재랑 다음 날짜가 다르거나 다음 날짜가 없는 경우
+                    if (group.Quality) //현재꺼가 양품인 데, 양품만 있는 경우
+                    {
+                        chart_display.Series[0].Points.AddY(group.Count);
+                        chart_display.Series[1].Points.AddY(0);
+                    }
+                    else//현재꺼가 불량품인 데, 양품만 있는 경우
+                    {
+                        chart_display.Series[0].Points.AddY(0);
+                        chart_display.Series[1].Points.AddY(group.Count);
+                    }
+                    i++;
+                }
+
+            }
+        }

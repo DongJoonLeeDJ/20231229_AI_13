@@ -1,0 +1,76 @@
+private void button_chart_by_allDays_Click(object sender, EventArgs e)
+{
+    List<TestObj> groupbyDateCreatedQualityResult = (from q in dataManager.qualityManagers
+                                           orderby q.date_created, q.attribute_quality descending
+                                           group q by new
+                                           {
+                                               q.date_created,
+                                               q.attribute_quality
+                                           } into groupData
+                                           select new TestObj()
+                                           {
+                                               DateCreated = groupData.Key.date_created,
+                                               Quality = groupData.Key.attribute_quality,
+                                               Count = groupData.Count()
+                                           }).ToList<TestObj>();
+    chart_init();
+
+    chart_display.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+    chart_display.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+    chart_display.ChartAreas[0].AxisX.Enabled = AxisEnabled.False;
+    int length = groupbyDateCreatedQualityResult.Count();
+    for (int i = 0; i < length;)
+    {
+        TestObj group = groupbyDateCreatedQualityResult[i];
+        int groupCount = group.Count;
+        string nowDate = group.DateCreated.ToString("yyyy년 MM월 dd일");
+        bool isOnlyGood = group.Quality;
+        string nextDate = null;
+        int nextCount = -1;
+        try
+        {
+            TestObj nextGroup = groupbyDateCreatedQualityResult[i+1];
+            //i가 맨 마지막 인덱스인 경우
+            nextDate = nextGroup.DateCreated.ToString("yyyy년 MM월 dd일");
+            nextCount = nextGroup.Count;
+        }
+        catch (Exception ex)
+        {
+        }
+
+        if (nowDate == nextDate)
+        {
+            //양불 둘 다 추가해주고 i는 2씩 증가
+            chart_display.Series[0].Points.AddY(groupCount);
+            chart_display.Series[1].Points.AddY(nextCount);
+
+            i += 2;
+        }
+        else
+        {
+            //현재랑 다음 날짜가 다르거나 다음 날짜가 없는 경우
+            if (isOnlyGood) //현재꺼가 양품인 데, 양품만 있는 경우
+            {
+                chart_display.Series[0].Points.AddY(groupCount);
+                chart_display.Series[1].Points.AddY(0);
+            }
+            else//현재꺼가 불량품인 데, 양품만 있는 경우
+            {
+                chart_display.Series[0].Points.AddY(0);
+                chart_display.Series[1].Points.AddY(groupCount);
+            }
+            i++;
+        }
+
+    }
+    
+}
+
+
+//참고
+public class TestObj
+{
+    public DateTime DateCreated { get; set; }
+    public bool Quality { get; set; }
+    public int Count { get; set; }
+}
