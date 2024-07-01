@@ -1,0 +1,13 @@
+from flask import Flask
+app = Flask(__name__) #app 대신 application으로 적어도 된다.
+
+@app.route('/') #app 대신 application으로 적어도 된다.
+def hello_fla():
+    return "hello flask"
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000) #app 대신 application으로 적어도 된다.
+
+
+#pip install flask
+# https://wikidocs.net/81238
