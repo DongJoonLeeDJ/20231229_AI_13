@@ -2,3 +2,5 @@
 https://kakaobusiness.gitbook.io/main/tool/chatbot/tutorial/make_chatbot/tutorial_1
 서비스/도구->챗봇 관리자 센터->스킬 개발 가이드->응답 타입별 JSON 포맷
 https://kakaobusiness.gitbook.io/main/tool/chatbot/skill_guide/answer_json_format#carouselheader
+참고
+https://kakaobusiness.gitbook.io/main/tool/chatbot/tutorial/make_chatbot/tutorial_3
